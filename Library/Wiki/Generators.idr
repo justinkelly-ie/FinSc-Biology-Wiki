@@ -3,8 +3,8 @@ module Wiki.Generators
 import public QuickCheck
 import Compound.BiophysicalAggregation
 import Compound.BiologyScaleTransforms
-import Core.BoxInt
-import Core.Multiset
+import Stage0.BoxInt
+import Stage0.Multiset
 
 %default total
 

@@ -32,8 +32,8 @@ Cellular biomodules contract molecular multisets via structure-preserving scale 
 module Wiki.BiologyScaleTransformSpec
 
 import Core
-import Core.Order.Preorder
-import Math.OnSeq.FusedStream
+import Stage1.Order.Preorder
+import Stage0.OnSeq.FusedStream
 import Data.Fuel
 import Biology
 import Wiki.Generators
