@@ -58,17 +58,11 @@ record VerifiedGeneticTranslation where
   aminoAcidCount : Nat
   0 translationPrf : GeneticCodonConservationWitness codonCount aminoAcidCount
 
-||| $O(1)$ allocation deforested codon translation stream transducer using fusedHylomorphism
-public export covering
+||| $O(1)$ allocation deforested codon translation stream transducer using foldStreamNat
+public export
 fusedCodonTranslationStream : Fuel -> List (Nat, Nat) -> Nat
-fusedCodonTranslationStream f items =
-  fusedHylomorphism f
-    (\st => case st of
-              [] => Done
-              (c, a) :: rest => Yield (c + a) rest)
-    (\val, acc => val + acc)
-    0
-    items
+fusedCodonTranslationStream _ items =
+  foldStreamNat (length items) (\acc, (c, a) => acc + c + a) 0 (stream items)
 
 ||| 1. DNA Double Helix ScaleTransform Matches Hydrogen Bond Count
 public export
