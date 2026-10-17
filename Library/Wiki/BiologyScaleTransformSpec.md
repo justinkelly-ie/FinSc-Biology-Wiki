@@ -34,6 +34,7 @@ module Wiki.BiologyScaleTransformSpec
 import Core
 import Stage1.Order.Preorder
 import Stage0.OnSeq.FusedStream
+import Stage0.StructuralFuel
 import Data.Fuel
 import Biology
 import Wiki.Generators
@@ -60,9 +61,9 @@ record VerifiedGeneticTranslation where
 
 ||| $O(1)$ allocation deforested codon translation stream transducer using foldStreamNat
 public export
-fusedCodonTranslationStream : Fuel -> List (Nat, Nat) -> Nat
-fusedCodonTranslationStream _ items =
-  foldStreamNat (length items) (\acc, (c, a) => acc + c + a) 0 (stream items)
+fusedCodonTranslationStream : GohFuel cap -> List (Nat, Nat) -> Nat
+fusedCodonTranslationStream fuel items =
+  foldStreamNat (gohSteps fuel) (\acc, (c, a) => acc + c + a) 0 (stream items)
 
 ||| 1. DNA Double Helix ScaleTransform Matches Hydrogen Bond Count
 public export
@@ -89,6 +90,6 @@ auditBiologyScaleTransformSpecProof : IO Bool
 auditBiologyScaleTransformSpecProof = do
   let r1 = qc prop_dnaScaleTransformMatch
   let r2 = qc2 prop_dnaScaleTransformAdditivity
-  let streamSum = fusedCodonTranslationStream (limit 100) [(10, 20), (5, 15)]
+  let streamSum = fusedCodonTranslationStream (gohFuelForCapacity 39) [(10, 20), (5, 15)]
   pure (r1.pass == Just True && r2.pass == Just True && streamSum == 50)
 ```
