@@ -1,8 +1,8 @@
 module Wiki.Generators
 
 import public QuickCheck
-import Compound.BiophysicalAggregation
-import Compound.BiologyScaleTransforms
+import Stage0.Biology.BiophysicalAggregation
+import Stage0.Biology.BiologyScaleTransforms
 import Stage0.BoxInt
 import Stage0.Multiset
 
