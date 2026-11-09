@@ -1,7 +1,7 @@
 package FinSc-Biology-Wiki
 version = 0.1.0
 authors = "Justin Kelly"
-brief   = "Discrete Systems Biology Architecture Specification Wiki"
+brief   = "Layer 15 Biological Systems & Active Inference Verification Suite"
 
 depends = FinSc-Biology, FinSc-Multiset, FinSc-Metric-Substrate, FinSc-Phase-Unfolding, base, idris2-QuickCheck, linear
 sourcedir = "Library"
