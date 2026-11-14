@@ -31,7 +31,7 @@ Cellular biomodules contract molecular multisets via structure-preserving scale 
 ```idris
 module Wiki.BiologyScaleTransformSpec
 
-import Core
+import MetricSubstrate
 import Stage1.Order.Preorder
 import Stage0.OnSeq.FusedStream
 import Stage0.StructuralFuel
